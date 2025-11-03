@@ -6,7 +6,12 @@ jobs:
     name: test python
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v5
       - name: Get python
         run: sudo apt-get install python3 python3-pip
       - name: Test python
         run: python3 --version
+      - name: Setup CMake
+        run: sudo apt-get install cmake build-essentials
+      - name: Run CMake
+        run: cmake .. && cmake --build .
